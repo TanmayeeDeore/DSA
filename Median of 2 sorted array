@@ -1,0 +1,63 @@
+import java.util.*;
+
+public class medianof2sortedarray {
+    public static void median(int[] arr1,int[] arr2){
+        int n1 =arr1.length;
+        int n2 =arr2.length;
+        // int median=0;
+        int[] arr3 =new int[n1+n2];
+
+        int index =0;
+
+        for(int i=0 ; i<n1 ;i++){
+            arr3[index] = arr1[i];
+            index++;
+        }
+
+        for(int j=0; j<n2 ; j++){
+            arr3[index] = arr2[j];
+            index++;
+
+        }
+
+        for(int i=0 ; i<arr3.length ;i++){
+            for(int j=i+1 ;j<arr3.length ;j++){
+                if(arr3[i]> arr3[j]){
+                    int temp = arr3[i];
+                    arr3[i] = arr3[j];
+                    arr3[j] = temp;
+                }
+            }
+        }
+        System.out.println( Arrays.toString(arr3));
+        // if(arr3.length % 2 ==0){
+        //     System.out.println("even length array");
+        //     int mid = arr3.length/2;
+        //     median = (arr3[mid] + arr3[mid-1])/2;
+        //     System.out.println("median is "+median);
+        // }
+        // else{
+        //     System.out.println("odd length array");
+        //     int mid = arr3.length/2;
+        //     median = arr3[mid];
+        //     System.out.println("median is "+median);
+        // }
+        if(arr3.length % 2 !=0){
+            System.out.println("odd length array");
+            int median = arr3[arr3.length/2];
+            System.out.println("median is "+median);
+        }else{
+            System.out.println("even length array");
+            double median = (arr3[arr3.length/2] + arr3[arr3.length/2-1])/ 2.0;
+            System.out.println("median is "+median);
+        }
+    }
+
+    public static void main(String[] args){
+        int[] arr1 ={1,3};
+        int[] arr2 ={2,4};
+        median(arr1,arr2);
+
+    }
+    
+}
